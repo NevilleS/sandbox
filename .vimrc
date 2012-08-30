@@ -15,6 +15,15 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" Highlight search results
+set incsearch
+set hlsearch
+
+" Some of Derek Wyatt's config (https://github.com/derekwyatt/vim-config/blob/master/vimrc)
+
+" tell VIM to always put a status line in, even if there is only one window
+set laststatus=2
+
 " Andrew's ninja-folding
 " - zM (collapse all folds)
 " - zR (expand all folds)
@@ -37,5 +46,5 @@ set cindent "indent as you type
 set cinoptions='t0g0' "tweak indenting style
 set tw=120
 
-" Easily switch between .h and .cpp in the same directory
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" Easily switch between .h and .cpp in the same directory, or ../src/xyz.cpp <-> ../include/xyz.h
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,:s,include/\(\w\+\.\w\+\)$,XABCX/\1,:s,src/\(\w\+\.\w\+\)$,include/\1,:s,XABCX,src,<CR>
